@@ -1,10 +1,9 @@
-import Link from 'next/link';
-export default function Home() {
+import Head from 'next/head';
+import Layout from '../components/Layout';
+export default function HomePage() {
   return (
-    <div>
-      <h1>home</h1>
-
-      <Link href="/about">about</Link>
-    </div>
+    <Layout>
+      <h1>Home</h1>
+    </Layout>
   );
 }
