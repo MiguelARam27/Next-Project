@@ -1,9 +1,21 @@
-import Head from 'next/head';
 import Layout from '../components/Layout';
-export default function HomePage() {
+import { API_URL } from '@/config/index';
+export default function HomePage({ events }) {
+  console.log(events);
   return (
     <Layout>
-      <h1>Home</h1>
+      <h1>UpComing Events</h1>
     </Layout>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await fetch(`${API_URL}/api/events`);
+  const events = await res.json();
+
+  console.log(events);
+
+  return {
+    props: { events },
+  };
 }
