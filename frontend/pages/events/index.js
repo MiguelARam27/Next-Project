@@ -4,12 +4,8 @@ export default function HomePage() {
   return (
     <Layout>
       <div>
-        <Head>
-          <title>Dj Events</title>
-          <meta name="description" content="Welcome to DJ Events" />
-        </Head>
         <div>
-          <h2>Home</h2>
+          <h2>Events page</h2>
         </div>
       </div>
     </Layout>
