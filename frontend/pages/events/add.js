@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout';
-
-import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '@/styles/Form.module.css';
@@ -18,18 +19,65 @@ export default function add() {
     description: '',
   });
 
-  const handleSubmit = (e) => {
+  const [isValidToSubmit, setisValidToSubmit] = useState(false);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
+
+    const hasEmptyFields = Object.values(values).some(
+      (element) => element === ''
+    );
+    if (hasEmptyFields) {
+      toast.error('Please fill in all fields');
+    }
+
+    const res = await fetch(`${API_URL}/events`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+
+    if (!res.ok) {
+      toast.error('Something Went Wrong');
+    } else {
+      const evt = await res.json();
+      router.push(`/events/${evt.slug}`);
+    }
   };
   const handleInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+  useEffect(() => {
+    const {
+      name,
+      address,
+      date,
+      time,
+      description,
+      performers,
+      venue,
+    } = values;
+
+    if (
+      name === '' ||
+      address === '' ||
+      date === '' ||
+      time === '' ||
+      description === '' ||
+      venue === '' ||
+      performers === ''
+    ) {
+      setisValidToSubmit(false);
+    } else {
+      setisValidToSubmit(true);
+    }
+  }, [values]);
   return (
     <Layout title="Add New Event">
       <Link href="/events">Go Back</Link>
       <h1>Add Event</h1>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.grid}>
           <div>
@@ -106,7 +154,11 @@ export default function add() {
           ></textarea>
         </div>
 
-        <input type="submit" value="Add Event" className="btn" />
+        <input
+          type="submit"
+          value="Add Event"
+          className={isValidToSubmit ? 'btn' : 'btn-disabled'}
+        />
       </form>
     </Layout>
   );
