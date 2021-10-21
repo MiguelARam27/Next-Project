@@ -22,6 +22,7 @@ export default function EventsPage({ evt }) {
       router.push('/events');
     }
   };
+
   return (
     <Layout>
       <div className={styles.event}>
