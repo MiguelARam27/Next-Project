@@ -6,6 +6,7 @@ import AuthContext from '@/context/AuthContext';
 import { useContext } from 'react';
 export default function Header() {
   const { user, logout } = useContext(AuthContext);
+
   return (
     <div className={styles.header}>
       <div className={styles.logo}>

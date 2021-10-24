@@ -25,7 +25,6 @@ export default function ImageUpload({ evtId, imageUploaded, token }) {
       imageUploaded();
     } else {
       alert('not okay');
-      console.log(res);
     }
   };
 
