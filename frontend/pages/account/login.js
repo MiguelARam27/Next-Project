@@ -5,13 +5,16 @@ import Link from 'next/link';
 import Layout from '@/components/Layout';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '@/styles/Auth.module.css';
+import AuthContext from '@/context/AuthContext';
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const { login, error } = useContext(AuthContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    login({ email, password });
   };
+
   return (
     <Layout title={'login'}>
       <div className={styles.auth}>
