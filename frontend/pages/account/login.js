@@ -1,6 +1,6 @@
 import { FaUser } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,10 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login, error } = useContext(AuthContext);
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     login({ email, password });
@@ -45,7 +49,7 @@ export default function LoginPage() {
               }}
             />
           </div>
-          <input type="submit" value="login" class="btn" />
+          <input type="submit" value="login" className="btn" />
         </form>
         <p>
           Don't have an account?{' '}
