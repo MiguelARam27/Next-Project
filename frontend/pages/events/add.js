@@ -6,8 +6,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '@/styles/Form.module.css';
 import { API_URL } from '@/config/index';
+import { parseCookies } from '@/helpers/index';
 
-export default function add() {
+export default function add({ token }) {
   const router = useRouter();
   const [values, setValues] = useState({
     name: '',
@@ -34,11 +35,16 @@ export default function add() {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        Authorization: `Bearer ${token} `,
       },
       body: JSON.stringify(values),
     });
 
     if (!res.ok) {
+      console.log(res.status);
+      if (res.status === 403 || res.status === 401) {
+        toast.error('No token included');
+      }
       toast.error('Something Went Wrong');
     } else {
       const evt = await res.json();
@@ -162,4 +168,13 @@ export default function add() {
       </form>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ req }) {
+  const { token } = parseCookies(req);
+
+  console.log(token);
+  return {
+    props: { token },
+  };
 }

@@ -17,15 +17,13 @@ export default function DashboardPage({ events }) {
 
         {events.length > 0 ? (
           <>
-            {events.map((evt) => {
+            {events.map((evt, index) => {
               return (
-                <>
-                  <DashboardEvent
-                    evt={evt}
-                    key={evt.id}
-                    deleteEvent={deleteEvent}
-                  />
-                </>
+                <DashboardEvent
+                  evt={evt}
+                  key={index}
+                  deleteEvent={deleteEvent}
+                />
               );
             })}
           </>
