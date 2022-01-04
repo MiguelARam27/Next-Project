@@ -3,7 +3,6 @@ import { API_URL } from '@/config/index';
 
 export default async (req, res) => {
   if (req.method === 'POST') {
-    console.log(req.body);
     const { userName: username, email, password } = req.body;
 
     const strapiRes = await fetch(`${API_URL}/auth/local/register`, {
