@@ -72,6 +72,7 @@ export default function EditEventPage({ evt, token }) {
   const imageUploaded = async (e) => {
     const res = await fetch(`${API_URL}/events/${evt.id}`);
     const data = await res.json();
+
     setImagePreview(data.image.formats.thumbnail.url);
     setShowModal(false);
   };
@@ -182,7 +183,7 @@ export default function EditEventPage({ evt, token }) {
         <ImageUpload
           evtId={evt.id}
           imageUploaded={imageUploaded}
-          // token={token}
+          token={token}
         />
       </Modal>
     </Layout>

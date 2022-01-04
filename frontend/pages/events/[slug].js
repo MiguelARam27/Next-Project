@@ -20,7 +20,11 @@ export default function EventsPage({ evt }) {
         {evt.image && (
           <div className={styles.image}>
             <Image
-              src={evt.image.formats.medium.url}
+              src={
+                evt.image.formats?.medium?.url === undefined
+                  ? evt.image.formats.small.url
+                  : evt.image.formats.medium.url
+              }
               width={960}
               height={600}
             />
