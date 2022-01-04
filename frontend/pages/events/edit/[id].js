@@ -12,6 +12,7 @@ import Modal from '@/components/Modal';
 import ImageUpload from '@/components/ImageUpload';
 import { API_URL } from '@/config/index';
 import styles from '@/styles/Form.module.css';
+import { parseCookies } from '@/helpers/index';
 
 export default function EditEventPage({ evt, token }) {
   const [values, setValues] = useState({
@@ -46,7 +47,7 @@ export default function EditEventPage({ evt, token }) {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });
@@ -189,7 +190,7 @@ export default function EditEventPage({ evt, token }) {
 }
 
 export async function getServerSideProps({ params: { id }, req }) {
-  // const { token } = parseCookies(req);
+  const { token } = parseCookies(req);
 
   const res = await fetch(`${API_URL}/events/${id}`);
   const evt = await res.json();
@@ -197,7 +198,7 @@ export async function getServerSideProps({ params: { id }, req }) {
   return {
     props: {
       evt,
-      // token,
+      token,
     },
   };
 }

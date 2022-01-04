@@ -9,34 +9,9 @@ import { ToastContainer, toast } from 'react-toastify';
 export default function EventsPage({ evt }) {
   const router = useRouter();
 
-  const deleteEvent = async (e) => {
-    if (confirm('Are you sure you want to delete the event?')) {
-      const res = await fetch(`${API_URL}/events/${evt.id}`, {
-        method: 'DELETE',
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        toast.error(data.message);
-      }
-      router.push('/events');
-    }
-  };
-
   return (
     <Layout>
       <div className={styles.event}>
-        <div className={styles.controls}>
-          <Link href={`/events/edit/${evt.id}`}>
-            <a>
-              <FaPencilAlt /> Edit Event
-            </a>
-          </Link>
-
-          <a href="#" className={styles.delete} onClick={deleteEvent}>
-            <FaTimes /> Delete Event
-          </a>
-        </div>
         <span>
           {new Date(evt.date).toLocaleDateString('en-US')} at {evt.time}
         </span>
@@ -57,8 +32,7 @@ export default function EventsPage({ evt }) {
         <h3>Descritpion:</h3>
         <p>{evt.description}</p>
         <h3>Venue: {evt.venue}</h3>
-        <p>{evt.performers}</p>
-        <h3>venue : {evt.venue}</h3>
+
         <p>{evt.address}</p>
 
         <Link href="/events">
@@ -68,16 +42,6 @@ export default function EventsPage({ evt }) {
     </Layout>
   );
 }
-
-// export async function getServerSideProps({ query: { slug } }) {
-//   const res = await fetch(`${API_URL}/api/events/${slug}`);
-
-//   const events = await res.json();
-
-//   return {
-//     props: { evt: events[0] },
-//   };
-// }
 
 export async function getStaticPaths() {
   const res = await fetch(`${API_URL}/events`);

@@ -41,7 +41,6 @@ export default function add({ token }) {
     });
 
     if (!res.ok) {
-      console.log(res.status);
       if (res.status === 403 || res.status === 401) {
         toast.error('No token included');
       }
@@ -173,7 +172,6 @@ export default function add({ token }) {
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
 
-  console.log(token);
   return {
     props: { token },
   };
