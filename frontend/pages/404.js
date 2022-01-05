@@ -2,9 +2,13 @@ import Layout from '@/components/Layout';
 import styles from '@/styles/404.module.css';
 import Link from 'next/link';
 import { FaExclamationTriangle } from 'react-icons/fa';
+import { useEffect } from 'react';
 export default function NotFoundPage() {
+  useEffect(() => {
+    document.title = 'Not Found';
+  }, []);
   return (
-    <Layout title="Not Found">
+    <>
       <div className={styles.error}>
         <h1>
           {' '}
@@ -14,6 +18,6 @@ export default function NotFoundPage() {
         <h4>Sorry, there is nothing here</h4>
         <Link href={'/'}>Go back Home</Link>
       </div>
-    </Layout>
+    </>
   );
 }

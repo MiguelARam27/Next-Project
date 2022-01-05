@@ -4,17 +4,22 @@ import EventItem from '@/components/events/EventItem';
 import qs from 'qs';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useEffect } from 'react';
 export default function SearchPage({ events }) {
   const router = useRouter();
+
+  useEffect(() => {
+    document.title = 'Search events';
+  }, []);
   return (
-    <Layout>
+    <>
       <Link href="/events">Go Back</Link>
       <h1> Search results for {router.query.term} </h1>
       {events.length === 0 && <h3>No events to show</h3>}
       {events.map((evt) => (
         <EventItem key={evt.id} evt={evt} />
       ))}
-    </Layout>
+    </>
   );
 }
 

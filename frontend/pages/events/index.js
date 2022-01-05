@@ -2,10 +2,14 @@ import Layout from '@/components/Layout';
 import { API_URL, PER_PAGE } from '@/config/index';
 import EventItem from '@/components/events/EventItem';
 import Pagination from '@/components/Pagination';
+import { useEffect } from 'react';
 
 export default function EventsPage({ events, total, page }) {
+  useEffect(() => {
+    document.title = 'Events';
+  }, []);
   return (
-    <Layout>
+    <>
       <h1>UpComing Events</h1>
       {events.length === 0 && <h3>No events to show</h3>}
       {events.map((evt) => (
@@ -13,7 +17,7 @@ export default function EventsPage({ events, total, page }) {
       ))}
 
       <Pagination page={page} total={total} />
-    </Layout>
+    </>
   );
 }
 

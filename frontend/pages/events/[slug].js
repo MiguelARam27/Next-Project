@@ -6,11 +6,15 @@ import Link from 'next/link';
 import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
+import { useEffect } from 'react';
 export default function EventsPage({ evt }) {
   const router = useRouter();
 
+  useEffect(() => {
+    document.title = 'Events';
+  }, []);
   return (
-    <Layout>
+    <>
       <div className={styles.event}>
         <span>
           {new Date(evt.date).toLocaleDateString('en-US')} at {evt.time}
@@ -43,7 +47,7 @@ export default function EventsPage({ evt }) {
           <a className={styles.back}> {'<'} Go Back</a>
         </Link>
       </div>
-    </Layout>
+    </>
   );
 }
 

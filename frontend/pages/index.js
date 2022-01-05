@@ -4,7 +4,7 @@ import EventItem from '@/components/events/EventItem';
 import Link from 'next/link';
 export default function HomePage({ events }) {
   return (
-    <Layout>
+    <>
       <h1>UpComing Events</h1>
       {events.length === 0 && <h3>No events to show</h3>}
       {events.map((evt) => (
@@ -15,7 +15,7 @@ export default function HomePage({ events }) {
           <a className="btn-secondary">View All</a>
         </Link>
       )}
-    </Layout>
+    </>
   );
 }
 

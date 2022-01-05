@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { parseCookies } from '@/helpers/index';
 import { API_URL } from '@/config/index';
@@ -8,6 +8,10 @@ import { useRouter } from 'next/router';
 import toast from 'react-toastify';
 export default function DashboardPage({ events, token }) {
   const router = useRouter();
+
+  useEffect(() => {
+    document.title = 'Dashboard';
+  }, []);
   const deleteEvent = async (id) => {
     if (confirm('Are you sure you want to delete the event?')) {
       const res = await fetch(`${API_URL}/events/${id}`, {
@@ -23,7 +27,7 @@ export default function DashboardPage({ events, token }) {
     }
   };
   return (
-    <Layout title="Dashboard">
+    <>
       <div className={styles.dash}>
         <h1>Dashboard</h1>
         <h3>My Events</h3>
@@ -42,7 +46,7 @@ export default function DashboardPage({ events, token }) {
           </>
         ) : null}
       </div>
-    </Layout>
+    </>
   );
 }
 

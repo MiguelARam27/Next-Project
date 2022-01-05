@@ -3,10 +3,13 @@ import { AuthProvider } from '@/context/AuthContext';
 // import { parseCookies } from '../helpers/index';
 import cookie from 'cookie';
 import { redirectUser } from '@/helpers/redirectUser';
+import Layout from '@/components/Layout';
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </AuthProvider>
   );
 }
