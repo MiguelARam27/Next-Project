@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/breakfasts",
+      "handler": "breakfast.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/breakfasts/count",
+      "handler": "breakfast.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/breakfasts/:id",
+      "handler": "breakfast.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/breakfasts",
+      "handler": "breakfast.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/breakfasts/:id",
+      "handler": "breakfast.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/breakfasts/:id",
+      "handler": "breakfast.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

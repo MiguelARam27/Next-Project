@@ -62,6 +62,10 @@
     "events": {
       "via": "user",
       "collection": "events"
+    },
+    "breakfast": {
+      "via": "users",
+      "collection": "breakfast"
     }
   }
 }

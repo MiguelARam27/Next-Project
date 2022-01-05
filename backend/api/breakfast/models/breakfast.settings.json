@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "breakfasts",
+  "info": {
+    "name": "Breakfast",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "users": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "breakfast"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    }
+  }
+}
