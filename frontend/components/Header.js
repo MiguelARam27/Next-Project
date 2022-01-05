@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../styles/Header.module.css';
+import styles from '../styles/Header.module.scss';
 import Search from './Search';
 import { FaSignInAlt, FaSignOutAlt, FaSign } from 'react-icons/fa';
 import AuthContext from '@/context/AuthContext';
@@ -11,10 +11,14 @@ export default function Header() {
     <div className={styles.header}>
       <div className={styles.logo}>
         <Link href={'/'}>
-          <a>Dj Events</a>
+          <a>
+            <span>Ado</span>
+            <span>Re</span>
+            <span>Mo</span>
+          </a>
         </Link>
       </div>
-      <Search />
+
       <nav>
         <ul>
           <li>
@@ -22,6 +26,14 @@ export default function Header() {
               <a>Events</a>
             </Link>
           </li>
+          {/* future content TODO */}
+          {/* <li className={styles.dropdown}>
+            <span>hello</span>
+
+            <div className={styles.dropdownContent}>
+              <h1>shown</h1>
+            </div>
+          </li> */}
 
           {user ? (
             <>
