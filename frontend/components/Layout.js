@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 
 export default function Layout({ title, keywords, description, children }) {
   const router = useRouter();
+
   return (
     <div>
       <Head>
@@ -21,7 +22,7 @@ export default function Layout({ title, keywords, description, children }) {
       {router.pathname === '/' ? (
         <>{children}</>
       ) : (
-        <div className={styles.container}></div>
+        <div className={styles.container}>{children}</div>
       )}
 
       <Footer />

@@ -1,5 +1,5 @@
 //colors
-$color-main: #b7a369;
+$color-main: #ff8c00;
 $color-bg-dark: #121b24;
 //dimensions
 $nav-bar-height: 5vh;
@@ -7,7 +7,7 @@ $nav-bar-height: 5vh;
 
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 600px) {
       @content;
     } //600px
   }
@@ -22,7 +22,7 @@ $nav-bar-height: 5vh;
     } //1200px
   }
   @if $breakpoint == big-desktop {
-    @media only screen and (min-width: 112.5em) {
+    @media only screen and (min-width: 969px) {
       @content;
     } //1800
   }
