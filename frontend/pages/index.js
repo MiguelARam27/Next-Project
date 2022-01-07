@@ -2,7 +2,9 @@ import Layout from '../components/Layout';
 import { API_URL } from '@/config/index';
 import EventItem from '@/components/events/EventItem';
 import Link from 'next/link';
-import styles from '@/styles/landing.module.scss';
+
+import Hero from '@/components/Landing/Hero';
+import Offers from '@/components/Landing/Offers';
 export default function HomePage({ events }) {
   return (
     <>
@@ -17,29 +19,8 @@ export default function HomePage({ events }) {
         </Link>
       )} */}
 
-      <div className={styles.container}>
-        <div className={styles.leftContainer}>
-          <div className={styles.topContainer}>
-            <h1>Living Italian</h1>
-          </div>
-          <div className={styles.bottomContainer}>
-            <div className={styles.description}>
-              <p>
-                Adore Remo is offering fabously fresh, modern, authentic italian
-                cooking. Fast and light lunches.
-              </p>
-            </div>
-            <div className={styles.buttonContainer}>
-              <button className={styles.button}>Book a table</button>
-
-              <span>&#8594;</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.rightContainer}>
-          <img src="/images/hero.png" alt="chef cooking" />
-        </div>
-      </div>
+      <Hero />
+      <Offers />
     </>
   );
 }

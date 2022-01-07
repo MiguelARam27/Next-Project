@@ -33,7 +33,7 @@
         color: #434343;
         font-size: 5rem;
         text-transform: capitalize;
-        font-family: cursive;
+
         @include respond(phone) {
           text-align: center;
         }
