@@ -1,8 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "breakfasts",
+  "collectionName": "offers",
   "info": {
-    "name": "breakfast"
+    "name": "offers",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -17,10 +18,11 @@
     "price": {
       "type": "decimal"
     },
-    "user": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "breakfasts"
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "string"
     },
     "image": {
       "model": "file",
@@ -33,9 +35,6 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
-    },
-    "description": {
-      "type": "string"
     }
   }
 }

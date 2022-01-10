@@ -2,14 +2,33 @@ import React from 'react';
 import styles from '@/styles/Offers.module.scss';
 import Carousel, { CarouselItem } from '../Carousel/Carousel';
 
-export default function Offers() {
+export default function Offers({ offers }) {
   return (
     <div className={styles.container}>
       <Carousel>
-        <CarouselItem>Item 1 </CarouselItem>
-        <CarouselItem>Item 2 </CarouselItem>
-        <CarouselItem>Item 3 </CarouselItem>
-        <CarouselItem>Item 4 </CarouselItem>
+        {offers.map((offer, index) => {
+          return (
+            <CarouselItem key={index}>
+              <div className={styles.offerCard}>
+                <div
+                  className={styles.image}
+                  style={{
+                    backgroundImage: `url(${offer.image.url})`,
+                  }}
+                ></div>
+                <div className={styles.description}>
+                  <h1>special {offer.type} offer</h1>
+
+                  <h2>{offer.name}</h2>
+                  <div>
+                    <p>{offer.description}</p>
+                  </div>
+                  <span>${offer.price}</span>
+                </div>
+              </div>
+            </CarouselItem>
+          );
+        })}
       </Carousel>
     </div>
   );

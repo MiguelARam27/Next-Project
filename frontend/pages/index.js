@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import Hero from '@/components/Landing/Hero';
 import Offers from '@/components/Landing/Offers';
-export default function HomePage({ events }) {
+export default function HomePage({ offers }) {
   return (
     <>
       {/* <h1>UpComing Events</h1>
@@ -20,17 +20,18 @@ export default function HomePage({ events }) {
       )} */}
 
       <Hero />
-      <Offers />
+      <Offers offers={offers} />
     </>
   );
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/events?_sort=date:ASC&_limit=3`);
-  const events = await res.json();
+  const res = await fetch(`${API_URL}/offers`);
+  const offers = await res.json();
 
+  console.log(offers);
   return {
-    props: { events: events },
+    props: { offers: offers },
     revalidate: 1,
   };
 }

@@ -9,15 +9,35 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 200px;
-  background-color: green;
-  color: #fff;
+  min-height: 300px;
 }
 .indicators {
   display: flex;
   justify-content: center;
 
-  & > button {
-    margin: 5px;
+  margin: 0 auto;
+  width: 50%;
+  padding: 4rem 0;
+
+  button {
+    padding: 0.5rem 1.2rem;
+
+    background-color: transparent;
+    color: $color-main;
+    border: 0.15rem solid $color-main;
+    border-radius: 0.125em;
+    padding: 1em 2.5em;
+    font-weight: bold;
+    margin: 0 1.5rem;
+    font-size: 1.2rem;
+
+    svg {
+      font-size: 1.5rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

@@ -1,5 +1,6 @@
 import styles from '@/styles/Carousel.module.scss';
 import React, { useState } from 'react';
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
 export const CarouselItem = ({ children, width }) => {
   return (
     <div className={styles.carouselItem} style={{ width: width }}>
@@ -21,7 +22,7 @@ const Carousel = ({ children }) => {
     setActiveIndex(newIndex);
   };
   return (
-    <div className={styles.Carousel}>
+    <div className={styles.carousel}>
       <div
         className={styles.inner}
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
@@ -37,14 +38,15 @@ const Carousel = ({ children }) => {
             updateIndex(activeIndex - 1);
           }}
         >
-          prev
+          <AiOutlineArrowLeft /> prev
         </button>
+
         <button
           onClick={() => {
             updateIndex(activeIndex + 1);
           }}
         >
-          next
+          Next <AiOutlineArrowRight />
         </button>
       </div>
     </div>
