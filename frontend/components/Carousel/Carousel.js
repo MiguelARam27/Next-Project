@@ -1,6 +1,7 @@
 import styles from '@/styles/Carousel.module.scss';
 import React, { useState } from 'react';
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
+import { useSwipeable } from 'react-swipeable';
 export const CarouselItem = ({ children, width }) => {
   return (
     <div className={styles.carouselItem} style={{ width: width }}>
@@ -21,8 +22,13 @@ const Carousel = ({ children }) => {
 
     setActiveIndex(newIndex);
   };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => updateIndex(activeIndex + 1),
+    onSwipedRight: () => updateIndex(activeIndex - 1),
+  });
   return (
-    <div className={styles.carousel}>
+    <div className={styles.carousel} {...handlers}>
       <div
         className={styles.inner}
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}

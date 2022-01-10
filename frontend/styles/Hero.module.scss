@@ -28,6 +28,9 @@
       align-items: center;
       justify-content: flex-start;
       height: 20%;
+      @include respond(phone) {
+        justify-content: center;
+      }
       h1 {
         font-weight: bolder;
         color: #434343;
@@ -36,6 +39,7 @@
 
         @include respond(phone) {
           text-align: center;
+          font-size: 4rem;
         }
       }
     }
