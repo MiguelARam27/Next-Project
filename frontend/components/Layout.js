@@ -5,7 +5,13 @@ import Footer from './Footer';
 import ShowCase from './ShowCase';
 import { useRouter } from 'next/router';
 
-export default function Layout({ title, keywords, description, children }) {
+export default function Layout({
+  title,
+  keywords,
+  description,
+  children,
+  socialLinks,
+}) {
   const router = useRouter();
 
   return (
@@ -25,7 +31,7 @@ export default function Layout({ title, keywords, description, children }) {
         <div className={styles.container}>{children}</div>
       )}
 
-      <Footer />
+      <Footer socialLinks={socialLinks} />
     </div>
   );
 }

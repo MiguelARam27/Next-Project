@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/facebook-link",
+      "handler": "facebook-link.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/facebook-link",
+      "handler": "facebook-link.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/facebook-link",
+      "handler": "facebook-link.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

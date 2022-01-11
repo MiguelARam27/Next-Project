@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "facebook_links",
+  "info": {
+    "name": "facebookLink"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    }
+  }
+}

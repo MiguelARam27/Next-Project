@@ -10,8 +10,11 @@ export default function Hero() {
         <div className={styles.bottomContainer}>
           <div className={styles.description}>
             <p>
-              Adore Remo is offering fabously fresh, modern, authentic italian
-              cooking. Fast and light lunches.
+              Adoremo is offering fabously fresh, modern, authentic italian
+              cooking. Fast and light lunches. At Adoremo's we like to bring you
+              the best that Italian Cuisine can offer. Using only the best and
+              freshest ingredients, we cook like Mama is there watching our
+              every move in putting together.
             </p>
           </div>
           <div className={styles.buttonContainer}>

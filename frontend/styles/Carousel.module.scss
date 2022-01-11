@@ -37,13 +37,23 @@
     margin: 0 1.5rem;
     font-size: 1.2rem;
 
+    transition: all 0.3s ease-in-out;
+
     svg {
       font-size: 1.5rem;
       display: inline-block;
       vertical-align: middle;
+      transition: all 0.3s ease-in-out;
     }
     &:hover {
       cursor: pointer;
+
+      background-color: $color-main;
+      color: white;
+
+      svg {
+        color: white;
+      }
     }
   }
 }
