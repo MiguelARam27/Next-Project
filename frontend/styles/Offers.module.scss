@@ -9,29 +9,31 @@
   height: 45vh;
   border-radius: 0.2rem;
   overflow: hidden;
-  -webkit-box-shadow: 0px 10px 13px -7px #000000,
-    5px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-
-  @include respond(phone) {
-    flex-direction: column;
-    height: 65vh;
-  }
+  white-space: normal;
+  -webkit-box-shadow: 0px 3px 11px -7px #000000,
+    1px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 3px 11px -7px #000000, 1px 5px 15px 5px rgba(0, 0, 0, 0);
 
   @include respond(tab-port) {
     width: 80vw;
+  }
+  @include respond(phone) {
+    height: auto;
+    flex-direction: column;
+    width: 100%;
   }
   .image {
     overflow: hidden;
     height: 100%;
     width: 60%;
     background-repeat: no-repeat;
-
     background-size: cover;
 
     @include respond(phone) {
-      height: 50%;
+      height: 30vh;
       width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
 
@@ -43,13 +45,13 @@
     flex-flow: column;
     justify-content: space-around;
     background-color: rgba(167, 166, 186, 0.1);
-    @include respond(phone) {
-      height: 50%;
-      width: 100%;
-    }
 
     @include respond(tab-port) {
       padding: 2rem 2rem;
+    }
+    @include respond(phone) {
+      min-height: 50vh;
+      width: 100%;
     }
     h1 {
       text-align: left;
@@ -58,6 +60,9 @@
       letter-spacing: 1px;
       font-size: 1.45rem;
       color: $color-main;
+      @include respond(phone) {
+        font-size: 1.2rem;
+      }
     }
 
     h2 {
@@ -66,11 +71,10 @@
       font-weight: bolder;
       color: #434343;
       font-size: 1.5rem;
+      @include respond(phone) {
+        font-size: 1.25rem;
+      }
     }
-    // display: flex;
-    // flex-direction: column;
-    // overflow: hidden;
-    // word-wrap: break-word;
 
     div {
       white-space: normal;
@@ -86,6 +90,9 @@
       color: #c80f4c;
       font-size: 1.4rem;
       font-weight: bolder;
+      @include respond(phone) {
+        font-size: 1.35rem;
+      }
     }
   }
 }

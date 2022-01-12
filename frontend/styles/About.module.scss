@@ -1,0 +1,141 @@
+.container {
+  margin: 2.5rem 0;
+  padding: 1.5rem 10rem;
+  display: flex;
+  @include respond(phone) {
+    padding: 1.5rem 1.25rem;
+  }
+
+  @include respond(tab-port) {
+    flex-direction: column;
+    min-height: 80vh;
+    justify-content: space-between;
+  }
+
+  .leftContainer {
+    width: 50%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @include respond(phone) {
+      width: 100%;
+    }
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    h1 {
+      font-weight: bold;
+      color: $color-title-grey;
+      @include respond(phone) {
+        text-align: center;
+      }
+    }
+
+    .linkContainer {
+      @include respond(tab-port) {
+        width: 70%;
+      }
+      @include respond(phone) {
+        width: 100%;
+      }
+      width: 50%;
+      background-color: $color-bg-purple;
+      position: relative;
+      overflow: hidden;
+      padding: 1.5rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 30rem;
+      justify-content: space-around;
+      -webkit-box-shadow: 0px 10px 11px -7px #000000,
+        1px 5px 15px 5px rgba(0, 0, 0, 0);
+      box-shadow: 0px 10px 11px -7px #000000, 1px 5px 15px 5px rgba(0, 0, 0, 0);
+
+      span {
+        color: white;
+        font-size: 1.25rem;
+        padding: 0.5rem 0.5rem;
+        width: 40%;
+        text-align: center;
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+          cursor: pointer;
+          color: $color-main;
+        }
+        &:not(:last-child) {
+          border-bottom: 2px solid grey;
+          border-radius: 3px;
+        }
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -5rem;
+        left: -5rem;
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%;
+
+        background-color: $color-bg-light-purple;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: -5rem;
+        right: -5rem;
+        border-radius: 50%;
+        height: 10rem;
+        width: 10rem;
+        background-color: $color-bg-light-purple;
+      }
+    }
+  }
+  .rightContainer {
+    width: 50%;
+
+    @include respond(tab-port) {
+      width: 100%;
+      margin-top: 2.5rem;
+    }
+    .image {
+      height: 30rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      overflow: hidden;
+      background-size: contain;
+      width: 100%;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      img {
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.125em;
+        width: 80%;
+
+        @include respond(tab-port) {
+          width: 100%;
+        }
+      }
+    }
+
+    .description {
+      padding: 2.5rem 1.1rem;
+      h1 {
+        font-weight: bold;
+        color: $color-title-grey;
+      }
+
+      p {
+        color: $color-title-grey;
+        font-size: 1.15rem;
+        font-weight: lighter;
+      }
+    }
+  }
+}
