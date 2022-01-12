@@ -33,7 +33,6 @@ MyApp.getInitialProps = async ({ ctx }) => {
   const facebookRes = await fetch(`${API_URL}/facebook-link`);
   const facebookdata = await facebookRes.json();
 
-  console.log(facebookdata);
   const socialLinks = {
     facebook: facebookdata,
   };

@@ -87,6 +87,7 @@
         text-transform: capitalize;
         @include respond(phone) {
           font-size: 1.05rem;
+          padding: 1.5em 0.15em;
         }
 
         &:hover {
@@ -101,6 +102,10 @@
           display: inline-block; /* Needed to add space between the bullet and the text */
           width: 1em; /* Also needed for space (tweak if needed) */
           margin-left: -1em;
+          @include respond(phone) {
+            margin-left: -0.5em;
+            width: 0.5em;
+          }
         }
       }
     }

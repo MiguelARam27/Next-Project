@@ -6,7 +6,6 @@ import {
 } from 'react-icons/ai';
 import Link from 'next/link';
 export default function Footer({ socialLinks }) {
-  console.log(socialLinks);
   return (
     <footer className={styles.footer}>
       <div className={styles.footerLeft}>
@@ -38,11 +37,12 @@ export default function Footer({ socialLinks }) {
           <Link href={'/offers'}>
             <li>Offers</li>
           </Link>
-          <Link href={'/location'}>
-            <li>Location</li>
-          </Link>
+
           <Link href={'/contact'}>
             <li>Contact</li>
+          </Link>
+          <Link href={'/location'}>
+            <li>Location</li>
           </Link>
         </ul>
       </div>

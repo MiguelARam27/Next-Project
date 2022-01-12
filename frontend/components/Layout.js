@@ -25,12 +25,13 @@ export default function Layout({
 
       {/* {router.pathname === '/' && <ShowCase />} */}
 
-      {router.pathname === '/' ? (
+      {/* {router.pathname === '/' ? (
         <>{children}</>
       ) : (
         <div className={styles.container}>{children}</div>
-      )}
+      )} */}
 
+      <>{children}</>
       <Footer socialLinks={socialLinks} />
     </div>
   );

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/appetizers",
+      "handler": "appetizers.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/appetizers/count",
+      "handler": "appetizers.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/appetizers/:id",
+      "handler": "appetizers.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/appetizers",
+      "handler": "appetizers.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/appetizers/:id",
+      "handler": "appetizers.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/appetizers/:id",
+      "handler": "appetizers.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
