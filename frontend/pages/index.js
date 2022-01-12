@@ -6,11 +6,13 @@ import Link from 'next/link';
 import Hero from '@/components/Landing/Hero';
 import Offers from '@/components/Landing/Offers';
 import About from '@/components/Landing/About';
+
 export default function HomePage({ offers }) {
   return (
     <>
       <Hero />
       <About />
+
       <Offers offers={offers} />
     </>
   );

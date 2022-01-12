@@ -4,13 +4,19 @@
 
 .menu {
   margin: 0 auto;
-  padding: 0.5rem 0;
+  padding: 0.85rem 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: $color-bg-purple;
+
   span {
     color: white;
+    transition: all 0.43s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      color: $color-main;
+    }
   }
   .selected {
     color: $color-main;
@@ -37,8 +43,11 @@
     grid-template-columns: 1fr;
   }
   @include respond(phone) {
-    padding: 0.5rem 0.5rem;
+    padding: 3.5rem 2.5rem;
     gap: 2.5rem;
+  }
+  @media (max-width: 375px) {
+    padding: 3.5rem 0.5rem;
   }
 
   .menuItem {
@@ -60,7 +69,7 @@
       z-index: 1;
       @include respond(phone) {
         width: 100%;
-        height: 8rem;
+        height: 16rem;
       }
 
       img {

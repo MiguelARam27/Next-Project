@@ -14,8 +14,16 @@ export default function Menu() {
           Appetizers
         </span>
       </Link>
+      <Link href={'/menu/breakfast'}>
+        <span
+          className={
+            router.pathname === '/menu/breakfast' ? styles.selected : null
+          }
+        >
+          Breakfast
+        </span>
+      </Link>
 
-      <span>Breakfast</span>
       <span>Lunch</span>
       <span>Dinner</span>
       <span>Pizza</span>
