@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '@/styles/Hero.module.scss';
+import { AiOutlineArrowRight } from 'react-icons/ai';
 export default function Hero() {
   return (
     <div className={styles.container}>
@@ -20,7 +21,9 @@ export default function Hero() {
           <div className={styles.buttonContainer}>
             <button className={styles.button}>Book a table</button>
 
-            <span>&#8594;</span>
+            <div>
+              <AiOutlineArrowRight />
+            </div>
           </div>
         </div>
       </div>

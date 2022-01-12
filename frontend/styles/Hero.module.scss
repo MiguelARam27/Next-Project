@@ -67,6 +67,9 @@
         display: flex;
         height: 5rem;
         cursor: pointer;
+        &:hover {
+          cursor: pointer;
+        }
 
         button {
           display: inline-block;
@@ -86,14 +89,18 @@
           }
         }
 
-        span {
-          display: inline-block;
+        div {
           height: 100%;
+          font-size: 1.15rem;
           color: white;
           background-color: $color-main;
           border-radius: 0.125em;
-          padding: 1em 2.5em;
-          font-size: 1rem;
+          padding: 1em 0.5em;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2rem;
           @include respond(phone) {
             font-size: 1.15rem;
           }
