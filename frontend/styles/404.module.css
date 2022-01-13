@@ -1,6 +1,11 @@
 .error {
   text-align: center;
-  margin: 100px 0 200px;
+  /* margin: 100px 0 200px; */
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .error h1 {

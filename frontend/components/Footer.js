@@ -38,9 +38,6 @@ export default function Footer({ socialLinks }) {
             <li>Offers</li>
           </Link>
 
-          <Link href={'/contact'}>
-            <li>Contact</li>
-          </Link>
           <Link href={'/location'}>
             <li>Location</li>
           </Link>

@@ -4,7 +4,7 @@ import EventItem from '@/components/events/EventItem';
 import Link from 'next/link';
 
 import Hero from '@/components/Landing/Hero';
-import Offers from '@/components/Landing/Offers';
+import Offers from '@/components/Landing/OffersComponent';
 import About from '@/components/Landing/About';
 import Map from '@/components/Landing/Map';
 

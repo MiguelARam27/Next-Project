@@ -10,13 +10,13 @@ export default function NotFoundPage() {
   return (
     <>
       <div className={styles.error}>
-        <h1>
+        <h1 style={{ padding: '.25rem .2rem' }}>
           {' '}
           <FaExclamationTriangle />
           404
         </h1>
         <h4>Sorry, there is nothing here</h4>
-        <Link href={'/'}>Go back Home</Link>
+        <Link href={'/'}>Go Back Home</Link>
       </div>
     </>
   );

@@ -1,8 +1,11 @@
 import React from 'react';
-import styles from '@/styles/Offers.module.scss';
+import styles from '@/styles/OffersStyle.module.scss';
 import Carousel, { CarouselItem } from '../Carousel/Carousel';
 
 export default function Offers({ offers }) {
+  if (offers === null || undefined) {
+    return null;
+  }
   return (
     <div className={styles.container}>
       <Carousel>
