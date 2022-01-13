@@ -1,0 +1,131 @@
+.container {
+  padding: 2rem 5rem;
+
+  h1 {
+    text-align: center;
+  }
+  @include respond(tab-port) {
+    padding: 1rem 5rem;
+  }
+  @include respond(phone) {
+    padding: 1rem 1rem;
+  }
+  .flexContainer {
+    display: flex;
+    @include respond(tab-port) {
+      flex-direction: column;
+    }
+
+    .hoursContainer {
+      width: 33%;
+      @include respond(tab-port) {
+        width: 100%;
+      }
+      border-radius: 0.225em;
+      padding: 1.6rem 1.5rem;
+
+      background-color: $color-bg-purple;
+      -webkit-box-shadow: 0px 3px 11px -7px #000000,
+        1px 5px 15px 5px rgba(0, 0, 0, 0);
+      box-shadow: 0px 3px 11px -7px #000000, 1px 5px 15px 5px rgba(0, 0, 0, 0);
+
+      h2 {
+        width: 100%;
+        color: $color-main;
+        text-align: center;
+        border-bottom: 1px solid white;
+        line-height: 0.1em;
+        margin: 10px 0 20px;
+      }
+
+      h2 span {
+        background: $color-bg-purple;
+        padding: 0 10px;
+        border-radius: 0.225em;
+      }
+      .timesContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        padding: 1.1rem 0;
+        margin: 0.8rem 0;
+        color: white;
+      }
+    }
+
+    .mapContainer {
+      width: 33%;
+      overflow: hidden;
+      display: flex;
+      flex-flow: column;
+      background-color: $color-bg-purple;
+      margin: 0 1.1rem;
+      border-radius: 0.225em;
+      padding: 1.5rem 1.5rem;
+      -webkit-box-shadow: 0px 3px 11px -7px #000000,
+        1px 5px 15px 5px rgba(0, 0, 0, 0);
+      box-shadow: 0px 3px 11px -7px #000000, 1px 5px 15px 5px rgba(0, 0, 0, 0);
+
+      @include respond(tab-port) {
+        width: 100%;
+        margin: 1.1rem 0;
+      }
+      h2 {
+        width: 100%;
+        color: $color-main;
+        text-align: center;
+        border-bottom: 1px solid white;
+        line-height: 0.1em;
+        margin: 10px 0 20px;
+      }
+
+      h2 span {
+        background: $color-bg-purple;
+        padding: 0 10px;
+        border-radius: 0.225em;
+      }
+      h4 {
+        color: whitesmoke;
+        padding: 0.5rem 0;
+      }
+    }
+    .contactContainer {
+      width: 33%;
+      overflow: hidden;
+      border-radius: 0.225em;
+      -webkit-box-shadow: 0px 3px 11px -7px #000000,
+        1px 5px 15px 5px rgba(0, 0, 0, 0);
+      box-shadow: 0px 3px 11px -7px #000000, 1px 5px 15px 5px rgba(0, 0, 0, 0);
+      background-color: $color-bg-purple;
+
+      padding: 1.5rem 1.5rem;
+      @include respond(tab-port) {
+        width: 100%;
+      }
+      h2 {
+        width: 100%;
+        color: $color-main;
+        text-align: center;
+        border-bottom: 1px solid white;
+        line-height: 0.1em;
+        margin: 10px 0 20px;
+      }
+
+      h2 span {
+        background: $color-bg-purple;
+        padding: 0 10px;
+        border-radius: 0.225em;
+      }
+
+      .contact {
+        padding: 1.5rem 0.5rem;
+        h3 {
+          color: $color-main;
+        }
+        span {
+          color: white;
+        }
+      }
+    }
+  }
+}

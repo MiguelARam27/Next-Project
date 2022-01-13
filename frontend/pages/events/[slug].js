@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import { useEffect } from 'react';
-import EventMap from '@/components/EventMap';
+import EventMap from '@/components/events/EventMap';
 export default function EventsPage({ evt }) {
   const router = useRouter();
 
