@@ -3,20 +3,19 @@ import styles from '@/styles/Menu.module.scss';
 import Menu from '@/components/menu/Menu';
 import MenuLayout from '@/components/menu/MenuLayout';
 import { API_URL } from '@/config/index';
-export default function MenuPage({ appetizers }) {
+export default function PizzaPage({ pizzas }) {
   return (
     <div className={styles.container}>
       <Menu />
-      <MenuLayout items={appetizers} />
+      <MenuLayout items={pizzas} />
     </div>
   );
 }
-
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/appetizers?_sort=price:ASC`);
+  const res = await fetch(`${API_URL}/pizzas?_sort=price:ASC`);
   const data = await res.json();
 
   return {
-    props: { appetizers: data }, // will be passed to the page component as props
+    props: { pizzas: data }, // will be passed to the page component as props
   };
 }

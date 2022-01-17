@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { FaImage } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'pages/account/dashboard/appetizers/node_modules/react-toastify/dist/ReactToastify.css';
 // import { parseCookies } from '@/helpers/index';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
@@ -11,7 +11,7 @@ import Layout from '@/components/Layout';
 import Modal from '@/components/Modal';
 import ImageUpload from '@/components/ImageUpload';
 import { API_URL } from '@/config/index';
-import styles from '@/styles/Form.module.css';
+import styles from 'pages/account/dashboard/appetizers/node_modules/@/styles/Form.module.css';
 import { parseCookies } from '@/helpers/index';
 
 export default function EditEventPage({ evt, token }) {
@@ -78,7 +78,7 @@ export default function EditEventPage({ evt, token }) {
   };
 
   return (
-    <Layout title="Edit New Event">
+    <>
       <Link href="/events">Go Back</Link>
       <h1>Edit Event</h1>
       <ToastContainer />
@@ -186,7 +186,7 @@ export default function EditEventPage({ evt, token }) {
           token={token}
         />
       </Modal>
-    </Layout>
+    </>
   );
 }
 

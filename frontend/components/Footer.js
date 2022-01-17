@@ -15,7 +15,7 @@ export default function Footer({ socialLinks }) {
           <span>Mo</span>
         </div>
         <div className={styles.socialContainer}>
-          <a href={socialLinks.facebook.url}>
+          <a href={socialLinks?.facebook.url}>
             <AiFillFacebook />
           </a>
           <a href="https://facebook.com">

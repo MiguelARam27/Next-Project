@@ -3,7 +3,7 @@ import Layout from '@/components/Layout';
 import { parseCookies } from '@/helpers/index';
 import { API_URL } from '@/config/index';
 import styles from '@/styles/Dashboard.module.css';
-import DashboardEvent from '@/components/DashboardEvent';
+import DashboardEvent from '@/components/dashboard/DashboardEvent';
 import { useRouter } from 'next/router';
 import toast from 'react-toastify';
 export default function DashboardPage({ events, token }) {

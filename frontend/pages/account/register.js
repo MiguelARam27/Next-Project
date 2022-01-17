@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
-import 'react-toastify/dist/ReactToastify.css';
+import 'pages/account/dashboard/appetizers/node_modules/react-toastify/dist/ReactToastify.css';
 import styles from '@/styles/Auth.module.css';
 import AuthContext from '@/context/AuthContext';
 export default function RegisterPage() {

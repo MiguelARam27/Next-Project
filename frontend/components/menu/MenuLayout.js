@@ -10,7 +10,15 @@ export default function MenuLayout({ items }) {
           <React.Fragment key={index}>
             <div className={styles.menuItem}>
               <div className={styles.image}>
-                <Image src={item.image.url} layout="fill" alt="" />
+                <Image
+                  src={
+                    item?.image?.url
+                      ? item.image.url
+                      : '/images/foodPlaceholder.jpeg'
+                  }
+                  layout="fill"
+                  alt=""
+                />
               </div>
               <div className={styles.description}>
                 <h2>{item.name}</h2>

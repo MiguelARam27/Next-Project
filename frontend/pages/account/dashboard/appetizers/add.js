@@ -1,26 +1,27 @@
-import Layout from '@/components/Layout';
 import { ToastContainer, toast } from 'react-toastify';
-import 'pages/account/dashboard/appetizers/node_modules/react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import styles from 'pages/account/dashboard/appetizers/node_modules/@/styles/Form.module.css';
+import styles from '@/styles/Form.module.css';
 import { API_URL } from '@/config/index';
 import { parseCookies } from '@/helpers/index';
-
+import Modal from '@/components/Modal';
+import ImageUpload from '@/components/ImageUpload';
+import { FaImage } from 'react-icons/fa';
 export default function add({ token }) {
   const router = useRouter();
   const [values, setValues] = useState({
     name: '',
-    performers: '',
-    venue: '',
-    address: '',
-    date: '',
-    time: '',
+    price: '',
     description: '',
   });
-
+  const [imagePreview, setImagePreview] = useState(null);
+  const handleInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
   const [isValidToSubmit, setisValidToSubmit] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -31,7 +32,7 @@ export default function add({ token }) {
       toast.error('Please fill in all fields');
     }
 
-    const res = await fetch(`${API_URL}/events`, {
+    const res = await fetch(`${API_URL}/appetizers`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -47,32 +48,15 @@ export default function add({ token }) {
       toast.error('Something Went Wrong');
     } else {
       const evt = await res.json();
-      router.push(`/events/${evt.slug}`);
+      console.log(evt);
+      // router.push(`/events/${evt.slug}`);
     }
   };
-  const handleInputChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
-  useEffect(() => {
-    const {
-      name,
-      address,
-      date,
-      time,
-      description,
-      performers,
-      venue,
-    } = values;
 
-    if (
-      name === '' ||
-      address === '' ||
-      date === '' ||
-      time === '' ||
-      description === '' ||
-      venue === '' ||
-      performers === ''
-    ) {
+  useEffect(() => {
+    const { name, price, description } = values;
+
+    if (name === '' || price === '' || description === '') {
       setisValidToSubmit(false);
     } else {
       setisValidToSubmit(true);
@@ -81,12 +65,12 @@ export default function add({ token }) {
   return (
     <div className={styles.container}>
       <Link href="/events">Go Back</Link>
-      <h1>Add Event</h1>
+      <h1>Add Appetizer</h1>
       <ToastContainer />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.grid}>
           <div>
-            <label htmlFor="name">Event Name</label>
+            <label htmlFor="name">Appetizer Name</label>
             <input
               type="text"
               id="name"
@@ -96,52 +80,12 @@ export default function add({ token }) {
             />
           </div>
           <div>
-            <label htmlFor="performers">Performers</label>
+            <label htmlFor="price">Price</label>
             <input
               type="text"
-              name="performers"
-              id="performers"
-              value={values.performers}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="venue">Venue</label>
-            <input
-              type="text"
-              name="venue"
-              id="venue"
-              value={values.venue}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              name="address"
-              id="address"
-              value={values.address}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              name="date"
-              id="date"
-              value={values.date}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="time">Time</label>
-            <input
-              type="text"
-              name="time"
-              id="time"
-              value={values.time}
+              id="price"
+              name="price"
+              value={values.price}
               onChange={handleInputChange}
             />
           </div>
@@ -161,7 +105,7 @@ export default function add({ token }) {
 
         <input
           type="submit"
-          value="Add Event"
+          value="Add Appetizer"
           className={isValidToSubmit ? 'btn' : 'btn-disabled'}
         />
       </form>
