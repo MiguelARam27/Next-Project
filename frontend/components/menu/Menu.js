@@ -23,11 +23,36 @@ export default function Menu() {
           Breakfast
         </span>
       </Link>
-
-      <span>Lunch</span>
-      <span>Dinner</span>
-      <span>Pizza</span>
-      <span>Drinks</span>
+      <Link href={'/menu/lunch'}>
+        <span
+          className={router.pathname === '/menu/lunch' ? styles.selected : null}
+        >
+          Lunch
+        </span>
+      </Link>
+      <Link href={'/menu/dinner'}>
+        <span
+          className={
+            router.pathname === '/menu/dinner' ? styles.selected : null
+          }
+        >
+          Dinner
+        </span>
+      </Link>
+      <Link href={'/menu/pizza'}>
+        <span
+          className={router.pathname === '/menu/pizza' ? styles.selected : null}
+        >
+          Pizza
+        </span>
+      </Link>
+      <Link href={'/menu/pizza'}>
+        <span
+          className={router.pathname === '/menu/pizza' ? styles.selected : null}
+        >
+          Pizza
+        </span>
+      </Link>
     </div>
   );
 }

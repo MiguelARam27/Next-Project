@@ -24,7 +24,7 @@ export default function ImageUpload({ id, imageUploaded, token, type }) {
     if (res.ok) {
       imageUploaded();
     } else {
-      alert('not okay');
+      alert('Error');
     }
   };
 
