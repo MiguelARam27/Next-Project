@@ -47,9 +47,7 @@ export default function add({ token }) {
       }
       toast.error('Something Went Wrong');
     } else {
-      const evt = await res.json();
-      console.log(evt);
-      // router.push(`/events/${evt.slug}`);
+      router.push(`/account/dashboard`);
     }
   };
 
