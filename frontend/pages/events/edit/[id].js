@@ -17,7 +17,7 @@ import { parseCookies } from '@/helpers/index';
 export default function EditEventPage({ evt, token }) {
   const [values, setValues] = useState({
     name: evt.name,
-    performers: evt.performers,
+
     venue: evt.venue,
     address: evt.address,
     date: evt.date,
@@ -94,16 +94,7 @@ export default function EditEventPage({ evt, token }) {
               onChange={handleInputChange}
             />
           </div>
-          <div>
-            <label htmlFor="performers">Performers</label>
-            <input
-              type="text"
-              name="performers"
-              id="performers"
-              value={values.performers}
-              onChange={handleInputChange}
-            />
-          </div>
+
           <div>
             <label htmlFor="venue">Venue</label>
             <input

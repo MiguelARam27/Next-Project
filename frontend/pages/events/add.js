@@ -60,7 +60,7 @@ export default function add({ token }) {
       date,
       time,
       description,
-      performers,
+
       venue,
     } = values;
 
@@ -70,8 +70,7 @@ export default function add({ token }) {
       date === '' ||
       time === '' ||
       description === '' ||
-      venue === '' ||
-      performers === ''
+      venue === ''
     ) {
       setisValidToSubmit(false);
     } else {

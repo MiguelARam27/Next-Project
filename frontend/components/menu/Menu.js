@@ -46,13 +46,6 @@ export default function Menu() {
           Pizza
         </span>
       </Link>
-      <Link href={'/menu/pizza'}>
-        <span
-          className={router.pathname === '/menu/pizza' ? styles.selected : null}
-        >
-          Pizza
-        </span>
-      </Link>
     </div>
   );
 }

@@ -24,7 +24,13 @@
     }
   }
 
-  ul {
+  .logo {
+    color: black;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+
+  .webNav {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,14 +59,33 @@
     }
   }
 
-  .logo {
-    color: black;
-    font-size: 20px;
-    text-transform: uppercase;
+  .webNav {
+    @include respond(tab-port) {
+      display: none;
+    }
+  }
+  .mobileMenu {
+    display: none;
+    @include respond(tab-port) {
+      display: block;
+    }
+    span {
+      padding: 1rem 0.4rem;
+      line-height: 2;
+      display: flex;
+      align-items: center;
+      &:hover {
+        cursor: pointer;
+      }
+
+      svg {
+        font-size: 1.8rem;
+      }
+    }
   }
 
   @include respond(tab-land) {
-    flex-direction: column;
+    // flex-direction: column;
     height: auto;
     a {
       margin-right: 0;
@@ -73,6 +98,79 @@
 
     .logo {
       margin: 20px 0;
+    }
+  }
+}
+
+.mobileNav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  color: white;
+  height: 200%;
+  display: none;
+  transition: all 0.3s ease-in-out;
+  span {
+    padding: 1rem 0.4rem;
+    line-height: 2;
+    display: flex;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+
+    svg {
+      font-size: 1.8rem;
+    }
+  }
+  .mobileLinks {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    overflow: auto;
+    padding: 0.5rem 1.5rem;
+    span {
+      display: block;
+      width: 100%;
+      text-align: center;
+      a {
+        color: white !important;
+      }
+    }
+  }
+}
+
+.show {
+  display: block;
+  animation: show 0.25s ease-in-out;
+  @keyframes show {
+    0% {
+      left: 100%;
+    }
+    50% {
+      left: 50%;
+    }
+    100% {
+      left: 0;
+    }
+  }
+}
+.hide {
+  animation: hideMenu 1.2s ease-in-out;
+  @keyframes hideMenu {
+    0% {
+      left: 0;
+    }
+    50% {
+      left: 50%;
+    }
+    100% {
+      left: 100%;
+      display: none;
     }
   }
 }

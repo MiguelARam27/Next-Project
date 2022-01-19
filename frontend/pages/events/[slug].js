@@ -36,8 +36,6 @@ export default function EventsPage({ evt }) {
           </div>
         )}
 
-        <h3>performers:</h3>
-        <p>{evt.performers}</p>
         <h3>Descritpion:</h3>
         <p>{evt.description}</p>
         <h3>Venue: {evt.venue}</h3>
