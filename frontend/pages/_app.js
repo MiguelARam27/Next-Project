@@ -43,3 +43,5 @@ MyApp.getInitialProps = async ({ ctx }) => {
     },
   };
 };
+
+//example
