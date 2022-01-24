@@ -1,1 +1,1 @@
-# Next-Project example
+# Next.js Restaurant application
