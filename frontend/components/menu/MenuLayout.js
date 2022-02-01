@@ -16,8 +16,11 @@ export default function MenuLayout({ items }) {
                       ? item.image.url
                       : '/images/foodPlaceholder.jpeg'
                   }
-                  layout="fill"
-                  alt=""
+                  // layout="responsive"
+                  // height="270"
+                  // width="280"
+                  layout={'fill'}
+                  alt={item.name}
                 />
               </div>
               <div className={styles.description}>

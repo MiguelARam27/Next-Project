@@ -5,9 +5,19 @@ import ReactMapgGL, { Marker } from 'react-map-gl';
 import Geocode from 'react-geocode';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from '@/styles/Map.module.scss';
+import { motion } from 'framer-motion';
+import {
+  mainComponentAnimation,
+  childrenmain,
+  mapAnimation,
+  contactChildren,
+} from '../../animations/mapsAnimation';
+import { useScroll } from '../../animations/useScroll';
 export default function Map() {
   Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE);
-
+  const [element, controls] = useScroll(0.55);
+  const [element2, controls2] = useScroll(0.55);
+  const [element3, controls3] = useScroll(0.55);
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -42,40 +52,52 @@ export default function Map() {
         <h1>Location</h1>
       </div> */}
       <div className={styles.flexContainer}>
-        <div className={styles.hoursContainer}>
+        <motion.div
+          className={styles.hoursContainer}
+          ref={element}
+          initial="hidden"
+          variants={mainComponentAnimation}
+          animate={controls}
+        >
           <h2>
             <span>Hours</span>
           </h2>
-          <div className={styles.timesContainer}>
+          <motion.div variants={childrenmain} className={styles.timesContainer}>
             <span>Monday</span>
             <span>9:00am - 9:00pm</span>
-          </div>
-          <div className={styles.timesContainer}>
+          </motion.div>
+          <motion.div variants={childrenmain} className={styles.timesContainer}>
             <span>Tuesday</span>
             <span>9:00am - 9:00pm</span>
-          </div>
-          <div className={styles.timesContainer}>
+          </motion.div>
+          <motion.div variants={childrenmain} className={styles.timesContainer}>
             <span>Wednesday</span>
             <span>9:00am - 9:00pm</span>
-          </div>
-          <div className={styles.timesContainer}>
+          </motion.div>
+          <motion.div variants={childrenmain} className={styles.timesContainer}>
             <span>Thursday</span>
             <span>9:00am - 9:00pm</span>
-          </div>
-          <div className={styles.timesContainer}>
+          </motion.div>
+          <motion.div variants={childrenmain} className={styles.timesContainer}>
             <span>Friday</span>
             <span>9:00am - 9:00pm</span>
-          </div>
-          <div className={styles.timesContainer}>
+          </motion.div>
+          <motion.div variants={childrenmain} className={styles.timesContainer}>
             <span>Saturday</span>
             <span>9:00am - 12:00am</span>
-          </div>
-          <div className={styles.timesContainer}>
+          </motion.div>
+          <motion.div variants={childrenmain} className={styles.timesContainer}>
             <span>Sunday</span>
             <span>11:00am - 10:00pm</span>
-          </div>
-        </div>
-        <div className={styles.mapContainer}>
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className={styles.mapContainer}
+          ref={element2}
+          initial="hidden"
+          variants={mapAnimation}
+          animate={controls2}
+        >
           <h2>
             <span>Location</span>
           </h2>
@@ -89,26 +111,32 @@ export default function Map() {
             </Marker>
           </ReactMapgGL>
           <h4>1604 W Osceola Pkwy Kissimmee, FL 34741</h4>
-        </div>
-        <div className={styles.contactContainer}>
-          <h2>
+        </motion.div>
+        <motion.div
+          className={styles.contactContainer}
+          ref={element3}
+          initial="hidden"
+          variants={mainComponentAnimation}
+          animate={controls3}
+        >
+          <motion.h2 variants={contactChildren}>
             <span>Contact</span>
-          </h2>
+          </motion.h2>
           <div className={styles.contactFlex}>
-            <div className={styles.contact}>
+            <motion.div className={styles.contact}>
               <h3>Phone</h3>
               <span>202-555-0175</span>
-            </div>
-            <div className={styles.contact}>
+            </motion.div>
+            <motion.div variants={contactChildren} className={styles.contact}>
               <h3>Fax</h3>
               <span>202-555-0158</span>
-            </div>
-            <div className={styles.contact}>
+            </motion.div>
+            <motion.div variants={contactChildren} className={styles.contact}>
               <h3>Email</h3>
               <span>example@gmail.com</span>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

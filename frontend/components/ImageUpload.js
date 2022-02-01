@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { API_URL } from '@/config/index';
+import { API_URL } from '@/config';
 import styles from '@/styles/Form.module.css';
+import { ToastContainer, Toast } from 'react-toastify';
 
 export default function ImageUpload({ id, imageUploaded, token, type }) {
   const [image, setImage] = useState(null);
@@ -24,7 +25,7 @@ export default function ImageUpload({ id, imageUploaded, token, type }) {
     if (res.ok) {
       imageUploaded();
     } else {
-      alert('Error');
+      Toast(res.error);
     }
   };
 
@@ -34,6 +35,7 @@ export default function ImageUpload({ id, imageUploaded, token, type }) {
 
   return (
     <div className={styles.form}>
+      <ToastContainer />
       <h1>Upload Event Image</h1>
       <form onSubmit={handleSubmit}>
         <div className={styles.file}>

@@ -1,18 +1,26 @@
 import React from 'react';
 import styles from '@/styles/OffersStyle.module.scss';
 import Carousel, { CarouselItem } from '../Carousel/Carousel';
-
+import { motion } from 'framer-motion';
+import { useScroll } from '../../animations/useScroll';
+import { projectTitle } from '../../animations/offersAnimations';
 export default function Offers({ offers }) {
   if (offers === null || undefined) {
     return null;
   }
+  const [element, controls] = useScroll(0.55);
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={element}>
       <Carousel>
         {offers.map((offer, index) => {
           return (
             <CarouselItem key={index}>
-              <div className={styles.offerCard}>
+              <motion.div
+                className={styles.offerCard}
+                initial="hidden"
+                variants={projectTitle}
+                animate={controls}
+              >
                 <div
                   className={styles.image}
                   style={{
@@ -28,7 +36,7 @@ export default function Offers({ offers }) {
                   </div>
                   <span>${offer.price}</span>
                 </div>
-              </div>
+              </motion.div>
             </CarouselItem>
           );
         })}

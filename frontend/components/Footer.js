@@ -41,6 +41,9 @@ export default function Footer({ socialLinks }) {
           <Link href={'/location'}>
             <li>Location</li>
           </Link>
+          <Link href={'/events'}>
+            <li>Events</li>
+          </Link>
         </ul>
       </div>
     </footer>

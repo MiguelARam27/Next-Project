@@ -1,14 +1,32 @@
 import React from 'react';
 import styles from '@/styles/Hero.module.scss';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { motion } from 'framer-motion';
+import {
+  jumboInfoSection,
+  jumboInfoChildren,
+  jumboPictureSection,
+  jumboPictureChildren,
+} from '../../animations/jumboAnimation';
 export default function Hero() {
   return (
     <div className={styles.container}>
-      <div className={styles.leftContainer}>
+      <motion.div
+        className={styles.leftContainer}
+        variants={jumboInfoSection}
+        initial="hidden"
+        animate="show"
+      >
         <div className={styles.topContainer}>
           <h1>Living Italian</h1>
         </div>
-        <div className={styles.bottomContainer}>
+
+        <motion.div
+          className={styles.bottomContainer}
+          variants={jumboInfoChildren}
+          initial="hidden"
+          animate="show"
+        >
           <div className={styles.description}>
             <p>
               Adoremo is offering fabously fresh, modern, authentic italian
@@ -18,18 +36,16 @@ export default function Hero() {
               every move in putting together.
             </p>
           </div>
-          <div className={styles.buttonContainer}>
-            <button className={styles.button}>Book a table</button>
-
-            <div>
-              <AiOutlineArrowRight />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.rightContainer}>
+        </motion.div>
+      </motion.div>
+      <motion.div
+        className={styles.rightContainer}
+        variants={jumboPictureSection}
+        initial="hidden"
+        animate="show"
+      >
         <img src="/images/hero.png" alt="chef cooking" />
-      </div>
+      </motion.div>
     </div>
   );
 }

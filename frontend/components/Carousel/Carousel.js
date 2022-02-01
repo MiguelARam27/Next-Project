@@ -2,6 +2,14 @@ import styles from '@/styles/Carousel.module.scss';
 import React, { useState } from 'react';
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
 import { useSwipeable } from 'react-swipeable';
+import { useScroll } from '../../animations/useScroll';
+import {
+  projectTitle,
+  buttonContainerAnimation,
+  button1Animation,
+  button2Animation,
+} from '../../animations/offersAnimations';
+import { motion } from 'framer-motion';
 export const CarouselItem = ({ children, width }) => {
   return (
     <div className={styles.carouselItem} style={{ width: width }}>
@@ -12,6 +20,7 @@ export const CarouselItem = ({ children, width }) => {
 
 const Carousel = ({ children }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [element, controls] = useScroll(0.55);
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
@@ -28,7 +37,7 @@ const Carousel = ({ children }) => {
     onSwipedRight: () => updateIndex(activeIndex - 1),
   });
   return (
-    <div className={styles.carousel} {...handlers}>
+    <div className={styles.carousel} {...handlers} ref={element}>
       <div
         className={styles.inner}
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
@@ -38,23 +47,30 @@ const Carousel = ({ children }) => {
         })}
       </div>
 
-      <div className={styles.indicators}>
-        <button
+      <motion.div
+        className={styles.indicators}
+        initial="hidden"
+        animate={controls}
+        variants={buttonContainerAnimation}
+      >
+        <motion.button
           onClick={() => {
             updateIndex(activeIndex - 1);
           }}
+          variants={button1Animation}
         >
           <AiOutlineArrowLeft /> prev
-        </button>
+        </motion.button>
 
-        <button
+        <motion.button
+          variants={button2Animation}
           onClick={() => {
             updateIndex(activeIndex + 1);
           }}
         >
           Next <AiOutlineArrowRight />
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
     </div>
   );
 };

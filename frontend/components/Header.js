@@ -1,15 +1,21 @@
 import Link from 'next/link';
 import styles from '../styles/Header.module.scss';
 import Search from './Search';
+import React, { useRef } from 'react';
 import { FaSignInAlt, FaSignOutAlt, FaSign } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoLogInSharp } from 'react-icons/io5';
 import { GoGrabber } from 'react-icons/go';
 import AuthContext from '@/context/AuthContext';
 import { useContext, useState } from 'react';
+import useOutsideAlerter from '../hooks/useOutsideAlerter';
+import { motion } from 'framer-motion';
+import { titleAnimation, linksAnimation } from '../animations/headerAnimation';
 export default function Header() {
   const { user, logout } = useContext(AuthContext);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showMore, setshowMore] = useState(false);
+  const [showMoreMobile, setShowMoreMobile] = useState(false);
 
   function handleShowClick() {
     let body = document.querySelector('body');
@@ -22,10 +28,19 @@ export default function Header() {
     setShowMobileMenu(false);
   }
 
+  function handleMenuShowMoreClick() {
+    setshowMore(!showMore);
+  }
+  function handleShowMobileMoreClick() {
+    setShowMoreMobile(!showMoreMobile);
+  }
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef, setshowMore);
   return (
     <>
       <div className={styles.header}>
-        <div className={styles.logo}>
+        <motion.div className={styles.logo} {...titleAnimation}>
           <Link href={'/'}>
             <a>
               <span>Ado</span>
@@ -33,10 +48,10 @@ export default function Header() {
               <span>Mo</span>
             </a>
           </Link>
-        </div>
+        </motion.div>
 
         <nav>
-          <ul className={styles.webNav}>
+          <motion.ul className={styles.webNav} {...linksAnimation}>
             <li>
               <Link href="/menu">
                 <a>Menu</a>
@@ -48,16 +63,45 @@ export default function Header() {
               </Link>
             </li>
             {/* future content TODO */}
-            {/* <li className={styles.dropdown}>
-            <span>hello</span>
-
-            <div className={styles.dropdownContent}>
-              <h1>shown</h1>
-            </div>
-          </li> */}
 
             {user ? (
               <>
+                <li
+                  className={styles.dropdown}
+                  onClick={handleMenuShowMoreClick}
+                  ref={wrapperRef}
+                >
+                  <span>Add Items</span>
+
+                  <div
+                    className={
+                      showMore
+                        ? `${styles.dropdownContent} ${styles.showContent}`
+                        : styles.dropdownContent
+                    }
+                  >
+                    <div className={styles.container}>
+                      <Link href="/events/add">
+                        <span>Add Event</span>
+                      </Link>
+                      <Link href="/account/dashboard/appetizers/add">
+                        <span>Add Appetizer Item</span>
+                      </Link>
+                      <Link href="/account/dashboard/lunches/add">
+                        <span>Add Lunch Item</span>
+                      </Link>
+                      <Link href="/account/dashboard/dinners/add">
+                        <span>Add Dinners Item</span>
+                      </Link>
+                      <Link href="/account/dashboard/pizzas/add">
+                        <span>Add Pizza Item</span>
+                      </Link>
+                      <Link href="/account/dashboard/breakfasts/add">
+                        <span>Add Breakfast Item</span>
+                      </Link>
+                    </div>
+                  </div>
+                </li>
                 <li>
                   <Link href="/account/dashboard">
                     <a>Dashboard</a>
@@ -69,25 +113,25 @@ export default function Header() {
                     logout();
                   }}
                 >
-                  <a className="btn btn-secondary btn-icon">
+                  <span className="btn btn-secondary btn-icon">
                     <FaSignOutAlt />
                     Logout
-                  </a>
+                  </span>
                 </li>
               </>
             ) : (
               <>
                 <li>
                   <Link href="/account/login">
-                    <a className="btn btn-secondary btn-icon">
+                    <span className="btn btn-secondary btn-icon">
                       <IoLogInSharp />
                       Login
-                    </a>
+                    </span>
                   </Link>
                 </li>
               </>
             )}
-          </ul>
+          </motion.ul>
           <ul className={styles.mobileMenu}>
             <span onClick={handleShowClick}>
               <GoGrabber />
@@ -95,6 +139,8 @@ export default function Header() {
           </ul>
         </nav>
       </div>
+
+      {/* mobile nav */}
       <nav
         className={
           showMobileMenu
@@ -107,25 +153,85 @@ export default function Header() {
         </span>
 
         <div className={styles.mobileLinks}>
-          <span>
+          <span onClick={handleHideClick}>
             <Link href="/menu">Menu</Link>
           </span>
-          <span>
+          <span onClick={handleHideClick}>
             <Link href="/events">Events</Link>
           </span>
 
-          {/* future content TODO */}
-          {/* <li className={styles.dropdown}>
-            <span>hello</span>
-
-            <div className={styles.dropdownContent}>
-              <h1>shown</h1>
-            </div>
-          </li> */}
-
           {user ? (
             <>
-              <span>
+              <div>
+                <span onClick={handleShowMobileMoreClick}>Add Items</span>
+                <div
+                  className={
+                    showMoreMobile ? styles.showAccordion : styles.Accordion
+                  }
+                >
+                  <div className={styles.AccordionBody}>
+                    <span
+                      onClick={() => {
+                        handleShowMobileMoreClick();
+                        handleHideClick();
+                      }}
+                    >
+                      <Link href="/events/add">Add Event</Link>
+                    </span>
+                    <span
+                      onClick={() => {
+                        handleShowMobileMoreClick();
+                        handleHideClick();
+                      }}
+                    >
+                      <Link href="/account/dashboard/appetizers/add">
+                        Add Appetizer Item
+                      </Link>
+                    </span>
+                    <span
+                      onClick={() => {
+                        handleShowMobileMoreClick();
+                        handleHideClick();
+                      }}
+                    >
+                      <Link href="/account/dashboard/lunches/add">
+                        Add Lunch Item
+                      </Link>
+                    </span>
+                    <span
+                      onClick={() => {
+                        handleShowMobileMoreClick();
+                        handleHideClick();
+                      }}
+                    >
+                      <Link href="/account/dashboard/dinners/add">
+                        Add Dinner Item
+                      </Link>
+                    </span>
+                    <span
+                      onClick={() => {
+                        handleShowMobileMoreClick();
+                        handleHideClick();
+                      }}
+                    >
+                      <Link href="/account/dashboard/pizzas/add">
+                        Add Pizza Item
+                      </Link>
+                    </span>
+                    <span
+                      onClick={() => {
+                        handleShowMobileMoreClick();
+                        handleHideClick();
+                      }}
+                    >
+                      <Link href="/account/dashboard/breakfast/add">
+                        Add Breakfast Item
+                      </Link>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <span onClick={handleHideClick}>
                 <Link href="/account/dashboard">
                   <a>Dashboard</a>
                 </Link>
@@ -144,7 +250,7 @@ export default function Header() {
             </>
           ) : (
             <>
-              <span>
+              <span onClick={handleHideClick}>
                 <Link href="/account/login">
                   <a className="btn btn-secondary btn-icon">
                     <IoLogInSharp />
