@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "events",
+  "collectionName": "dinners",
   "info": {
-    "name": "events",
-    "description": ""
+    "name": "Dinner"
   },
   "options": {
     "increments": true,
@@ -15,21 +14,11 @@
     "name": {
       "type": "string"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
-    },
-    "address": {
-      "type": "string"
-    },
-    "date": {
-      "type": "datetime"
-    },
-    "time": {
-      "type": "string"
+    "price": {
+      "type": "decimal"
     },
     "description": {
-      "type": "richtext"
+      "type": "text"
     },
     "image": {
       "model": "file",
@@ -42,14 +31,6 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
-    },
-    "user": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "events"
-    },
-    "venue": {
-      "type": "string"
     }
   }
 }
